@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct TasktrackerApp: App {
+struct TaskTrackerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
