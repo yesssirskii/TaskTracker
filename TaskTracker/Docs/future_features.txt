@@ -2,4 +2,5 @@
 - Make an animation for the add task dialog pop out from the plus button
 - Filter for completed tasks, located next to the plus button - DONE
 - Search bar at the bottom of the screen - DONE
-- WHen clicking on the HStack of a task, make the keyboard appear to enable the user to rename the task
+- When clicking on the HStack of a task, make the keyboard appear to enable the user to rename the task
+- Add the info sheet - DONE

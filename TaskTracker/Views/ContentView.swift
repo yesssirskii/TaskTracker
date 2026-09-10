@@ -7,6 +7,7 @@ struct ContentView: View {
     @State private var completedTasksCount: Int = 0
     @State private var newTaskTitle: String = ""
     @State private var showAddTask: Bool = false
+    @State private var showTaskInfo: Bool = false
     @State private var selectedTaskFilter: String = "All"
     
     var body: some View {
@@ -18,12 +19,43 @@ struct ContentView: View {
                             Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circlebadge")
                                 .foregroundColor(task.isCompleted ? .blue : .black)
                         }
+                        .buttonStyle(.plain) // Tells SwiftUI that the button is a separate tap target
                         Text(task.title)
                             .strikethrough(task.isCompleted)
                             .foregroundStyle(task.isCompleted ? .blue : .black)
                         Spacer() //puts the info button to the right
-                        Button(action: taskInfo){
+                        Button(action: { showTaskInfo = true }){
                             Image(systemName: "info.circle")
+                                .foregroundStyle(Color.blue)
+                        }
+                        .buttonStyle(.plain)
+                        .sheet(isPresented: $showTaskInfo) {
+                            if let index = viewModel.tasks.firstIndex(where: { $0.id == task.id }) {
+                                NavigationStack {
+                                    VStack {
+                                        Form {
+                                            Section {
+                                                TextField("Title", text: $viewModel.tasks[index].title)
+                                            }
+                                        }
+                                    }
+                                    .navigationTitle("Task info")
+                                    .navigationBarTitleDisplayMode(.inline)
+                                    .toolbar {
+                                        ToolbarItem(placement: .topBarLeading) {
+                                            Button(action: { showTaskInfo = false }) {
+                                                Image(systemName: "multiply")
+                                            }
+                                        }
+                                        ToolbarItem(placement: .confirmationAction) {
+                                            Button(action: { showTaskInfo = false}) {
+                                                Text("Edit")
+                                            }
+                                        }
+                                    }
+                                }
+                                .presentationDetents([.fraction(0.20)])
+                            }
                         }
                     }
                     .swipeActions(edge: .trailing) {
@@ -72,7 +104,7 @@ struct ContentView: View {
                             .navigationBarTitleDisplayMode(.inline)
                             .toolbar {
                                 ToolbarItem(placement: .topBarLeading) {
-                                    Button(action: { showAddTask = false}) {
+                                    Button(action: { showAddTask = false }) {
                                         Image(systemName: "multiply")
                                     }
                                 }
@@ -83,10 +115,11 @@ struct ContentView: View {
                                     }) {
                                         Image(systemName: "checkmark")
                                     }
+                                    .disabled(newTaskTitle.isEmpty)
                                 }
                             }
                         }
-                        .presentationDetents([.fraction(0.25)])
+                        .presentationDetents([.fraction(0.20)]) // sets how hight he sheet will go. In this case, how much higher from the bottom.
                     }
                 }
             }
