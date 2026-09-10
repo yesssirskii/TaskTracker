@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var viewModel = TaskViewModel()
+    @StateObject private var viewModel = TaskViewModel() // Passing the data and computed variables from the ViewModel to the View
     
     @State private var taskCount: Int = 0
     @State private var completedTasksCount: Int = 0
@@ -33,7 +33,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .searchable(text: $viewModel.searchQuery) //make the list of tasks searchable. This creates a search bar without needing TabView or none of that. Nice.
+            .searchable(text: $viewModel.searchQuery) // Makes the list of tasks searchable. This creates a search bar without needing TabView or none of that. Nice.
             .navigationTitle("Task tracker")
             .navigationBarTitleDisplayMode(.large)
             .navigationSubtitle("\(completedTasksCount) tasks completed.")
@@ -58,25 +58,34 @@ struct ContentView: View {
                     Button(action: { showAddTask = true }) {
                         Label("Add task", systemImage: "plus")
                     }
-                    // sheet is a small dialog that pops up from the bottom
+                    // Sheet is a small dialog that pops up from the bottom
                     .sheet(isPresented: $showAddTask) { // $ to both read and write the value
-                        VStack(spacing: 20) {
-                            Text("Add new task")
-                                .font(.title)
-                                .fontWeight(.bold)
-                            TextField("Title", text: $newTaskTitle)
-                                .textFieldStyle(.roundedBorder)
-                                .glassEffect()
-                            Button(action: {
-                                addTask()
-                                showAddTask = false
-                            }){
-                                Text("Add")
+                        NavigationStack {
+                            VStack {
+                                Form {
+                                    Section {
+                                        TextField("Title", text: $newTaskTitle)
+                                    }
+                                }
                             }
-                            .buttonStyle(.borderedProminent)
-                            .glassEffect()
+                            .navigationTitle("Add new task")
+                            .navigationBarTitleDisplayMode(.inline)
+                            .toolbar {
+                                ToolbarItem(placement: .topBarLeading) {
+                                    Button(action: { showAddTask = false}) {
+                                        Image(systemName: "multiply")
+                                    }
+                                }
+                                ToolbarItem(placement: .confirmationAction) {
+                                    Button(action: {
+                                        addTask()
+                                        showAddTask = false
+                                    }) {
+                                        Image(systemName: "checkmark")
+                                    }
+                                }
+                            }
                         }
-                        .padding()
                         .presentationDetents([.fraction(0.25)])
                     }
                 }
@@ -100,7 +109,7 @@ struct ContentView: View {
             viewModel.tasks[index].isCompleted.toggle()
             completedTasksCount = viewModel.tasks.filter { $0.isCompleted }.count
             
-            // If task is finished, remove it from the list and then append again
+            // If a task is completed, remove it from the list and then append again
             // in order for it to be at the end of the array.
             let task = viewModel.tasks.remove(at: index)
             task.isCompleted ? viewModel.tasks.append(task) : viewModel.tasks.insert(task, at: 0)
