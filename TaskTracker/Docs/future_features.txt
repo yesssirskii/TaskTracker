@@ -1,4 +1,5 @@
-- When completing a task, move it to the bottom of the task list, and grex out the text and button
+- When completing a task, move it to the bottom of the task list, and grey out the text and button - DONE
 - Make an animation for the add task dialog pop out from the plus button
-- Filter for completed accounts, located next to the plus button
-- Search bar at the bottom of the screen
+- Filter for completed tasks, located next to the plus button - DONE
+- Search bar at the bottom of the screen - DONE
+- WHen clicking on the HStack of a task, make the keyboard appear to enable the user to rename the task

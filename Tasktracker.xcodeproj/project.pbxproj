@@ -11,9 +11,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		60963A14304F1CE100B92C97 /* Tasktracker */ = {
+		60963A14304F1CE100B92C97 /* TaskTracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Tasktracker;
+			path = TaskTracker;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -30,7 +30,7 @@
 		60963A09304F1CE100B92C97 = {
 			isa = PBXGroup;
 			children = (
-				60963A14304F1CE100B92C97 /* Tasktracker */,
+				60963A14304F1CE100B92C97 /* TaskTracker */,
 				60963A13304F1CE100B92C97 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,7 +57,7 @@
 			buildRules = (
 			);
 			fileSystemSynchronizedGroups = (
-				60963A14304F1CE100B92C97 /* Tasktracker */,
+				60963A14304F1CE100B92C97 /* TaskTracker */,
 			);
 			name = Tasktracker;
 			productName = Tasktracker;
@@ -79,7 +79,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 60963A0D304F1CE100B92C97 /* Build configuration list for PBXProject "Tasktracker" */;
+			buildConfigurationList = 60963A0D304F1CE100B92C97 /* Build configuration list for PBXProject "TaskTracker" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -115,7 +115,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		60963A1B304F1CE200B92C97 /* Debug configuration for PBXProject "Tasktracker" */ = {
+		60963A1B304F1CE200B92C97 /* Debug configuration for PBXProject "TaskTracker" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -178,7 +178,7 @@
 			};
 			name = Debug;
 		};
-		60963A1C304F1CE200B92C97 /* Release configuration for PBXProject "Tasktracker" */ = {
+		60963A1C304F1CE200B92C97 /* Release configuration for PBXProject "TaskTracker" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -241,6 +241,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5H7T3AKKZY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -253,7 +254,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ivanmatejcic.Tasktracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ivanmatejcic.TaskTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -272,6 +273,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5H7T3AKKZY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -284,7 +286,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ivanmatejcic.Tasktracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ivanmatejcic.TaskTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -299,11 +301,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		60963A0D304F1CE100B92C97 /* Build configuration list for PBXProject "Tasktracker" */ = {
+		60963A0D304F1CE100B92C97 /* Build configuration list for PBXProject "TaskTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				60963A1B304F1CE200B92C97 /* Debug configuration for PBXProject "Tasktracker" */,
-				60963A1C304F1CE200B92C97 /* Release configuration for PBXProject "Tasktracker" */,
+				60963A1B304F1CE200B92C97 /* Debug configuration for PBXProject "TaskTracker" */,
+				60963A1C304F1CE200B92C97 /* Release configuration for PBXProject "TaskTracker" */,
 			);
 			defaultConfigurationName = Release;
 		};

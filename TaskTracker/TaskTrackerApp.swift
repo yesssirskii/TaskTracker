@@ -1,9 +1,5 @@
-//
-//  TasktrackerApp.swift
-//  Tasktracker
-//
-//  Created by Ivan Matejčić on 07.09.2026..
-//
+// This file says where the app starts.
+// In this case, ContentView(), which is the ContentView file.
 
 import SwiftUI
 
