@@ -15,14 +15,18 @@ struct ContentView: View {
             List(){
                 ForEach(viewModel.filteredTasks) { task in
                     HStack{
-                        Button(action: { changeTaskStatus(task: task) }) {
+                        Button(action: {
+                            changeTaskStatus(task: task)
+                            let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                            impactMed.impactOccurred() })
+                        {
                             Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circlebadge")
-                                .foregroundColor(task.isCompleted ? .blue : .black)
+                                .foregroundColor(task.isCompleted ? .blue : .primary)
                         }
                         .buttonStyle(.plain) // Tells SwiftUI that the button is a separate tap target
                         Text(task.title)
                             .strikethrough(task.isCompleted)
-                            .foregroundStyle(task.isCompleted ? .blue : .black)
+                            .foregroundStyle(task.isCompleted ? .blue : .primary)
                         Spacer() //puts the info button to the right
                         Button(action: { showTaskInfo = true }){
                             Image(systemName: "info.circle")
@@ -131,10 +135,6 @@ struct ContentView: View {
         
         viewModel.tasks.append(newTask)
         newTaskTitle = "" // reseting the value
-    }
-    
-    private func taskInfo(){
-        
     }
     
     private func changeTaskStatus(task: Task) {
