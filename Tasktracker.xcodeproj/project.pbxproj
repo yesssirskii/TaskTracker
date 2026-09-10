@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		60963A12304F1CE100B92C97 /* Tasktracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tasktracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		60963A12304F1CE100B92C97 /* Task Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Task Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -38,7 +38,7 @@
 		60963A13304F1CE100B92C97 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				60963A12304F1CE100B92C97 /* Tasktracker.app */,
+				60963A12304F1CE100B92C97 /* Task Tracker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -46,9 +46,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		60963A11304F1CE100B92C97 /* Tasktracker */ = {
+		60963A11304F1CE100B92C97 /* Task Tracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 60963A1D304F1CE200B92C97 /* Build configuration list for PBXNativeTarget "Tasktracker" */;
+			buildConfigurationList = 60963A1D304F1CE200B92C97 /* Build configuration list for PBXNativeTarget "Task Tracker" */;
 			buildPhases = (
 				60963A0E304F1CE100B92C97 /* Sources */,
 				60963A0F304F1CE100B92C97 /* Frameworks */,
@@ -59,9 +59,9 @@
 			fileSystemSynchronizedGroups = (
 				60963A14304F1CE100B92C97 /* TaskTracker */,
 			);
-			name = Tasktracker;
+			name = "Task Tracker";
 			productName = Tasktracker;
-			productReference = 60963A12304F1CE100B92C97 /* Tasktracker.app */;
+			productReference = 60963A12304F1CE100B92C97 /* Task Tracker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -93,7 +93,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				60963A11304F1CE100B92C97 /* Tasktracker */,
+				60963A11304F1CE100B92C97 /* Task Tracker */,
 			);
 		};
 /* End PBXProject section */
@@ -234,11 +234,12 @@
 			};
 			name = Release;
 		};
-		60963A1E304F1CE200B92C97 /* Debug configuration for PBXNativeTarget "Tasktracker" */ = {
+		60963A1E304F1CE200B92C97 /* Debug configuration for PBXNativeTarget "Task Tracker" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5H7T3AKKZY;
@@ -266,11 +267,12 @@
 			};
 			name = Debug;
 		};
-		60963A1F304F1CE200B92C97 /* Release configuration for PBXNativeTarget "Tasktracker" */ = {
+		60963A1F304F1CE200B92C97 /* Release configuration for PBXNativeTarget "Task Tracker" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5H7T3AKKZY;
@@ -309,11 +311,11 @@
 			);
 			defaultConfigurationName = Release;
 		};
-		60963A1D304F1CE200B92C97 /* Build configuration list for PBXNativeTarget "Tasktracker" */ = {
+		60963A1D304F1CE200B92C97 /* Build configuration list for PBXNativeTarget "Task Tracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				60963A1E304F1CE200B92C97 /* Debug configuration for PBXNativeTarget "Tasktracker" */,
-				60963A1F304F1CE200B92C97 /* Release configuration for PBXNativeTarget "Tasktracker" */,
+				60963A1E304F1CE200B92C97 /* Debug configuration for PBXNativeTarget "Task Tracker" */,
+				60963A1F304F1CE200B92C97 /* Release configuration for PBXNativeTarget "Task Tracker" */,
 			);
 			defaultConfigurationName = Release;
 		};

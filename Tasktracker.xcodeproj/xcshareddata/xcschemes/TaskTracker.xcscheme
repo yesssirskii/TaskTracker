@@ -16,7 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "60963A11304F1CE100B92C97"
-               BuildableName = "Tasktracker.app"
+               BuildableName = "Task Tracker.app"
+               BlueprintName = "Task Tracker"
                ReferencedContainer = "container:TaskTracker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,7 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "60963A11304F1CE100B92C97"
-            BuildableName = "Tasktracker.app"
+            BuildableName = "Task Tracker.app"
+            BlueprintName = "Task Tracker"
             ReferencedContainer = "container:TaskTracker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,7 +63,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "60963A11304F1CE100B92C97"
-            BuildableName = "Tasktracker.app"
+            BuildableName = "Task Tracker.app"
+            BlueprintName = "Task Tracker"
             ReferencedContainer = "container:TaskTracker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
