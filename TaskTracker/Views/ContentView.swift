@@ -7,9 +7,9 @@ struct ContentView: View {
     @State private var completedTasksCount: Int = 0
     @State private var newTaskTitle: String = ""
     @State private var showAddTask: Bool = false
-    @State private var showTaskInfo: Bool = false
+    @State private var selectedTask: Task? = nil
     @State private var selectedTaskFilter: String = "All"
-    
+
     var body: some View {
         NavigationStack {
             List(){
@@ -28,13 +28,15 @@ struct ContentView: View {
                             .strikethrough(task.isCompleted)
                             .foregroundStyle(task.isCompleted ? .blue : .primary)
                         Spacer() //puts the info button to the right
-                        Button(action: { showTaskInfo = true }){
+                        Button(action: { selectedTask = task }){
                             Image(systemName: "info.circle")
                                 .foregroundStyle(Color.blue)
                         }
                         .buttonStyle(.plain)
-                        .sheet(isPresented: $showTaskInfo) {
-                            if let index = viewModel.tasks.firstIndex(where: { $0.id == task.id }) {
+                        // The sheet is determined by the state of selectedTask.
+                        // If selectedTask has a value (it gets a value when clicking the info button), the sheet opens. If selectedTask becomes nil, the sheet closes.
+                        .sheet(item: $selectedTask) { selected in // selected refers to the $selectedTask value, its a new variable.
+                            if let index = viewModel.tasks.firstIndex(where: { $0.id == selected.id }) {
                                 NavigationStack {
                                     VStack {
                                         Form {
@@ -47,12 +49,12 @@ struct ContentView: View {
                                     .navigationBarTitleDisplayMode(.inline)
                                     .toolbar {
                                         ToolbarItem(placement: .topBarLeading) {
-                                            Button(action: { showTaskInfo = false }) {
+                                            Button(action: { selectedTask = nil }) {
                                                 Image(systemName: "multiply")
                                             }
                                         }
                                         ToolbarItem(placement: .confirmationAction) {
-                                            Button(action: { showTaskInfo = false}) {
+                                            Button(action: { selectedTask = nil}) {
                                                 Text("Edit")
                                             }
                                         }
