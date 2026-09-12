@@ -9,6 +9,8 @@ struct ContentView: View {
     @State private var showAddTask: Bool = false
     @State private var selectedTask: Task? = nil
     @State private var selectedTaskFilter: String = "All"
+    
+    @FocusState private var isFocused: Bool
 
     var body: some View {
         NavigationStack {
@@ -42,6 +44,7 @@ struct ContentView: View {
                                         Form {
                                             Section {
                                                 TextField("Title", text: $viewModel.tasks[index].title)
+                                                    .focused($isFocused)
                                             }
                                         }
                                     }
@@ -49,12 +52,17 @@ struct ContentView: View {
                                     .navigationBarTitleDisplayMode(.inline)
                                     .toolbar {
                                         ToolbarItem(placement: .topBarLeading) {
-                                            Button(action: { selectedTask = nil }) {
+                                            Button(action: {
+                                                selectedTask = nil
+                                            }) {
                                                 Image(systemName: "multiply")
                                             }
                                         }
                                         ToolbarItem(placement: .confirmationAction) {
-                                            Button(action: { selectedTask = nil}) {
+                                            Button(action: {
+                                                selectedTask = nil
+                                                isFocused = true
+                                            }) {
                                                 Text("Edit")
                                             }
                                         }
@@ -103,6 +111,7 @@ struct ContentView: View {
                                 Form {
                                     Section {
                                         TextField("Title", text: $newTaskTitle)
+                                            .focused($isFocused) // $ is two-way binding
                                     }
                                 }
                             }
@@ -125,6 +134,7 @@ struct ContentView: View {
                                 }
                             }
                         }
+                        .onAppear { isFocused = true }
                         .presentationDetents([.fraction(0.20)]) // sets how hight he sheet will go. In this case, how much higher from the bottom.
                     }
                 }
