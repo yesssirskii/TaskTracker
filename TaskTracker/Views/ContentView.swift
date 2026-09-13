@@ -14,63 +14,36 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            List(){
+            List() {
                 ForEach(viewModel.filteredTasks) { task in
                     HStack{
                         Button(action: {
                             changeTaskStatus(task: task)
+                            // Haptic feedback upon clicking
                             let impactMed = UIImpactFeedbackGenerator(style: .medium)
                             impactMed.impactOccurred() })
                         {
-                            Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circlebadge")
-                                .foregroundColor(task.isCompleted ? .blue : .primary)
+                            Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
+                                .foregroundColor(task.isCompleted ? .blue : .gray)
                         }
                         .buttonStyle(.plain) // Tells SwiftUI that the button is a separate tap target
                         Text(task.title)
                             .strikethrough(task.isCompleted)
                             .foregroundStyle(task.isCompleted ? .blue : .primary)
                         Spacer() //puts the info button to the right
-                        Button(action: { selectedTask = task }){
-                            Image(systemName: "info.circle")
+                        NavigationLink(destination:
+                            Group {
+                                if let index = viewModel.tasks.firstIndex(where: { $0.id == task.id }) {
+                                            TaskInfoView(infoTask: $viewModel.tasks[index])
+                                        }
+                        }){
+                            Image(systemName: "info.circle",)
                                 .foregroundStyle(Color.blue)
                         }
+                        .navigationLinkIndicatorVisibility(.hidden)
                         .buttonStyle(.plain)
                         // The sheet is determined by the state of selectedTask.
                         // If selectedTask has a value (it gets a value when clicking the info button), the sheet opens. If selectedTask becomes nil, the sheet closes.
-                        .sheet(item: $selectedTask) { selected in // selected refers to the $selectedTask value, its a new variable.
-                            if let index = viewModel.tasks.firstIndex(where: { $0.id == selected.id }) {
-                                NavigationStack {
-                                    VStack {
-                                        Form {
-                                            Section {
-                                                TextField("Title", text: $viewModel.tasks[index].title)
-                                                    .focused($isFocused)
-                                            }
-                                        }
-                                    }
-                                    .navigationTitle("Task info")
-                                    .navigationBarTitleDisplayMode(.inline)
-                                    .toolbar {
-                                        ToolbarItem(placement: .topBarLeading) {
-                                            Button(action: {
-                                                selectedTask = nil
-                                            }) {
-                                                Image(systemName: "multiply")
-                                            }
-                                        }
-                                        ToolbarItem(placement: .confirmationAction) {
-                                            Button(action: {
-                                                selectedTask = nil
-                                                isFocused = true
-                                            }) {
-                                                Text("Edit")
-                                            }
-                                        }
-                                    }
-                                }
-                                .presentationDetents([.fraction(0.20)])
-                            }
-                        }
                     }
                     .swipeActions(edge: .trailing) {
                         Button(role: .destructive, action: { deleteTask(task: task) }) {
