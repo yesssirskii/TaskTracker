@@ -24,7 +24,8 @@ struct TaskInfoView: View {
                     Button(action: { showEditTask = true }) {
                         Text("Edit")
                     }
-                    .sheet(isPresented: $showEditTask) { // selected refers to the $selectedTask value, its a new variable.
+                    // The sheet is determined by the state of showEditTask.
+                    .sheet(isPresented: $showEditTask) {
                         NavigationStack {
                             VStack {
                                 Form {
@@ -43,11 +44,11 @@ struct TaskInfoView: View {
                                     }
                                 }
                                 ToolbarItem(placement: .confirmationAction) {
-                                    Button(action: {
-                                        isFocused = true
-                                    }) {
+                                    Button(action: { isFocused = true }) {
                                         Image(systemName: "checkmark")
                                     }
+                                    .buttonStyle(.glassProminent)
+                                    .tint(.blue)
                                 }
                             }
                         }

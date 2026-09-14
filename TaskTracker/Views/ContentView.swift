@@ -6,9 +6,9 @@ struct ContentView: View {
     @State private var taskCount: Int = 0
     @State private var completedTasksCount: Int = 0
     @State private var newTaskTitle: String = ""
-    @State private var showAddTask: Bool = false
-    @State private var selectedTask: Task? = nil
     @State private var selectedTaskFilter: String = "All"
+    @State private var selectedTask: Task? = nil
+    @State private var showAddTask: Bool = false
     
     @FocusState private var isFocused: Bool
 
@@ -42,8 +42,6 @@ struct ContentView: View {
                         }
                         .navigationLinkIndicatorVisibility(.hidden)
                         .buttonStyle(.plain)
-                        // The sheet is determined by the state of selectedTask.
-                        // If selectedTask has a value (it gets a value when clicking the info button), the sheet opens. If selectedTask becomes nil, the sheet closes.
                     }
                     .swipeActions(edge: .trailing) {
                         Button(role: .destructive, action: { deleteTask(task: task) }) {
@@ -59,14 +57,13 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Menu {
-                        Button(action: { viewModel.selectedTaskFilter = "All" }) {
+                        Picker ("Filter", selection: $viewModel.selectedTaskFilter) {
                             Label("All tasks", systemImage: "list.bullet")
-                        }
-                        Button(action: { viewModel.selectedTaskFilter = "Completed"}) {
+                                .tag("All")
                             Label("Completed", systemImage: "checkmark.circle")
-                        }
-                        Button(action: { viewModel.selectedTaskFilter = "Incomplete" }) {
+                                .tag("Completed")
                             Label("Incomplete", systemImage: "circle")
+                                .tag("Incomplete")
                         }
                     } label: {
                         Label("Filter tasks", systemImage: "line.3.horizontal.decrease")
@@ -103,6 +100,8 @@ struct ContentView: View {
                                     }) {
                                         Image(systemName: "checkmark")
                                     }
+                                    .buttonStyle(.glassProminent)
+                                    .tint(.blue)
                                     .disabled(newTaskTitle.isEmpty)
                                 }
                             }
@@ -118,7 +117,7 @@ struct ContentView: View {
     private func addTask() {
         let newTask = Task(title: newTaskTitle)
         
-        viewModel.tasks.append(newTask)
+        viewModel.tasks.insert(newTask, at: 0)
         newTaskTitle = "" // reseting the value
     }
     
