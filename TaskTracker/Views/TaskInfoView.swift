@@ -2,6 +2,8 @@ import SwiftUI
 
 struct TaskInfoView: View {
     
+    @StateObject private var viewModel = TaskViewModel()
+    
     @Binding var infoTask: Task
     @FocusState private var isFocused: Bool
     @State private var showEditTask: Bool = false
@@ -44,11 +46,17 @@ struct TaskInfoView: View {
                                     }
                                 }
                                 ToolbarItem(placement: .confirmationAction) {
-                                    Button(action: { isFocused = true }) {
+                                    Button(action: {
+                                        updateTask(task: infoTask)
+                                        isFocused = true
+                                        showEditTask = false
+                                    }) {
                                         Image(systemName: "checkmark")
                                     }
                                     .buttonStyle(.glassProminent)
                                     .tint(.blue)
+                                    .disabled(infoTask.title.isEmpty ||
+                                              infoTask.title == viewModel.tasks.first(where: {$0.title == infoTask.title})?.title)
                                 }
                             }
                         }
@@ -57,5 +65,11 @@ struct TaskInfoView: View {
                 }
             }
         }
+    }
+    
+    private func updateTask(task: Task){
+        if let index = viewModel.tasks.firstIndex(where: { $0.id == task.id }) {
+                viewModel.tasks[index].title = task.title
+            }
     }
 }

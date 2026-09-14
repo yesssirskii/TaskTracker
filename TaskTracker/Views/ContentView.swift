@@ -20,8 +20,8 @@ struct ContentView: View {
                         Button(action: {
                             changeTaskStatus(task: task)
                             // Haptic feedback upon clicking
-                            let impactMed = UIImpactFeedbackGenerator(style: .medium)
-                            impactMed.impactOccurred() })
+                            let hapticFeedbackOnTaskStatusChange = UIImpactFeedbackGenerator(style: .medium)
+                            hapticFeedbackOnTaskStatusChange.impactOccurred() })
                         {
                             Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
                                 .foregroundColor(task.isCompleted ? .blue : .gray)
