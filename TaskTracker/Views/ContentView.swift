@@ -9,6 +9,7 @@ struct ContentView: View {
     @State private var selectedTaskFilter: String = "All"
     @State private var selectedTask: Task? = nil
     @State private var showAddTask: Bool = false
+    @State private var isConfirming: Bool = false
     
     @FocusState private var isFocused: Bool
 
@@ -44,9 +45,20 @@ struct ContentView: View {
                         .buttonStyle(.plain)
                     }
                     .swipeActions(edge: .trailing) {
-                        Button(role: .destructive, action: { deleteTask(task: task) }) {
+                        Button(role: .destructive, action: { isConfirming = true }) {
                             Label("Delete", systemImage: "trash")
                         }
+                    }
+                    .alert(
+                        "Are you sure you want to delete the task?", isPresented: $isConfirming) {
+                            Button(role: .destructive, action: { deleteTask(task: task)})
+                            {
+                                Text("Delete")
+                                    .foregroundStyle(Color.red)
+                            }
+                            Button("Cancel", role: .cancel){
+                                isConfirming = false
+                            }
                     }
                 }
             }
